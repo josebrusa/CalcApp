@@ -110,6 +110,28 @@ export const useCalculator = () => {
         lastOperation.current = Opertator.add
     }
 
+    const calculateResult = () => {
+
+        const num1 = Number(number)
+        const num2 = Number(prevNumber)
+
+        switch (lastOperation.current) {
+            case Opertator.add:
+                setNumber(`${num1 + num2}`)
+                break;
+            case Opertator.subtract:
+                setNumber(`${num2 - num1}`)
+                break;
+            case Opertator.multiply:
+                setNumber(`${num1 * num2}`)
+                break;
+            case Opertator.divide:
+                setNumber(`${num2 / num1}`)
+                break;
+        }
+
+        setPrevNumber('0')
+    }
 
 
     return {
@@ -124,6 +146,7 @@ export const useCalculator = () => {
         divideOperation,
         multiplyOperation,
         subtractOperation,
-        addOperation
+        addOperation,
+        calculateResult
     }
 }
