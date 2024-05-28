@@ -6,18 +6,21 @@ import { useCalculator } from '../hooks/useCalculator';
 
 export const CalculatorScreen = () => {
 
-    const { number, buildNumber } = useCalculator()
+    const { number, buildNumber, clean, toggleSign, deleteOperation } = useCalculator()
     return (
         <View style={styles.calculatorContainer}>
             <View style={{ paddingHorizontal: 30, paddingBottom: 20 }}>
-                <Text style={styles.mainResult}>{number}</Text>
+                <Text
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                    style={styles.mainResult}>{number}</Text>
                 <Text style={styles.subResult}>15</Text>
             </View>
 
             <View style={styles.row}>
-                <CalculatorButton onPress={() => console.log('C')} blackText label='C' color={colors.lightGray} />
-                <CalculatorButton onPress={() => console.log('+/-')} blackText label='+/-' color={colors.lightGray} />
-                <CalculatorButton onPress={() => console.log('del')} blackText label='del' color={colors.lightGray} />
+                <CalculatorButton onPress={clean} blackText label='C' color={colors.lightGray} />
+                <CalculatorButton onPress={toggleSign} blackText label='+/-' color={colors.lightGray} />
+                <CalculatorButton onPress={deleteOperation} blackText label='del' color={colors.lightGray} />
                 <CalculatorButton onPress={() => console.log('/')} label='/' color={colors.orange} />
             </View>
             <View style={styles.row}>
